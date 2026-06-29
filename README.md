@@ -22,22 +22,18 @@ The marketplace has stalled revenue growth for several months. The goal is to id
 
 ## What I Did
 
+**Problem:** Brazilian e-commerce startup — revenue stagnant for months. Need to find the cause and propose a solution.
+
 - Monthly retention cohort analysis at order placement stage
 - Product/market fit assessment from behavioral data
 - Identified 5 key metrics for profit maximization
 - Hypothesis prioritization using ICE framework
 - Defined target, proxy, and guardrail metrics for selected hypothesis
-- Analytical report with conclusions and recommendations
 
----
-
-## Key Findings
-
-- **Retention is critically low:** median M1 retention ≈ **0.5%**; ~**97%** of buyers don't return after first purchase, only ~**3%** place a repeat order.
-- **Product/market fit not confirmed:** no stable "plateau" on the retention curve — users don't form a habit of returning.
-- **Marketplace relies on new customer acquisition**, not retention; scaling marketing without improving repeat orders is risky for unit economics.
-- **Funnel bottleneck — second order:** worth investigating payment, delivery, status transparency, and return mechanics.
-- **Top hypothesis (ICE):** new payment method to boost repeat orders — validate via A/B test before full rollout.
+**Key findings:**
+- **No PMF:** users make one purchase and don't return; retention curve never plateaus
+- **Top priority (ICE score: 192):** fix bug in order processing system
+- **Scaling and new markets not viable** until retention reaches ≥5%
 
 Full analysis, charts, and calculations in [`ecommerce_retention_analysis.ipynb`](./ecommerce_retention_analysis.ipynb).
 
