@@ -1,64 +1,63 @@
-# E-commerce: анализ заказов и retention покупателей
+# E-commerce Retention Analysis
 
-**Автор:** [Маргарита Маркова](https://github.com/margomrkv)
+**Author:** [Margarita Markova](https://github.com/margomrkv)
 
-Финальный проект по блоку **«Продуктовая аналитика»** (Karpov Courses).
+Final project for **Product Analytics** module at [Karpov Courses](https://karpov.courses/).
 
-**Вопрос кейса:** почему не растёт выручка маркетплейса и что делать с точки зрения продуктовой команды?
+**Business question:** Why isn't marketplace revenue growing, and what should the product team do?
 
-Анализ выполнен на открытом датасете заказов бразильского маркетплейса **[Olist](https://olist.com/)** — это данные реального e-commerce бизнеса (~100k заказов, 2016–2018). В формулировке задания курса используется учебная рамка: вымышленный стартап, у которого «несколько месяцев не растёт выручка».
-
----
-
-## О чём проект
-
-Маркетплейс несколько месяцев не наращивает выручку. Нужно понять, где проблема в продукте, и предложить измеримые шаги без ухудшения пользовательского опыта.
-
-**Объект анализа:** заказы и поведение покупателей после первой покупки — retention, повторные заказы, **GMV** (Gross Merchandise Value, валовая стоимость товаров), отмены.
-
-**Ключевые методы:** когортный анализ retention, оценка product/market fit, продуктовые метрики, приоритизация гипотез по фреймворку **ICE**, рекомендации для продуктовой команды.
+Analysis performed on the public dataset from Brazilian marketplace **[Olist](https://olist.com/)** — real e-commerce data (~100k orders, 2016–2018).
 
 ---
 
-## Что сделано
+## About
 
-| № | Задача | Подход |
-|---|--------|--------|
-| 1 | Проанализировать месячный retention в оформление заказа | Когортный анализ (heatmap), медиана M1, z-тест долей |
-| 2 | Оценить наличие product/market fit у маркетплейса | Кривая PMF по медианному retention |
-| 3 | Определить 5 ключевых метрик для роста прибыли | GMV, активные покупатели, конверсия, repeat rate, AOV |
-| 4 | Приоритизировать продуктовые гипотезы | Фреймворк ICE |
-| 5 | Сформулировать метрики для A/B-теста | GMV (целевая), 2-й заказ (прокси), доля отмен (guardrail) |
-| 6 | Подготовить итоговый отчёт для продуктовой команды | Выводы и план действий |
+The marketplace has stalled revenue growth for several months. The goal is to identify the product issue and propose measurable actions without degrading user experience.
+
+**Analysis focus:** orders and buyer behavior after first purchase — retention, repeat orders, **GMV** (Gross Merchandise Value), cancellations.
+
+**Methods:** cohort retention analysis, product/market fit assessment, product metrics, hypothesis prioritization (ICE framework), recommendations for product team.
 
 ---
 
-## Ключевые выводы
+## What I Did
 
-- **Retention критически низкий:** медианный retention 1-го месяца ≈ **0,5%**; ~**97%** покупателей не возвращаются после первой покупки, повторный заказ совершают около **3%**.
-- **Product/market fit не подтверждён:** на кривой удержания нет устойчивого «плато» — пользователи не формируют привычку возвращаться.
-- **Маркетплейс живёт за счёт притока новых клиентов**, а не удержания текущих; масштабирование маркетинга без роста повторных заказов рискованно для юнит-экономики.
-- **Узкое место воронки — второй заказ:** стоит проверять оплату, доставку, прозрачность статусов и механики возврата пользователей.
-- **Приоритетная гипотеза (ICE):** новый способ оплаты для роста повторных заказов — проверять через A/B-тест, а не раскатывать сразу на всех.
-
-Подробная логика, графики и расчёты — в [`ecommerce_retention_analysis.ipynb`](./ecommerce_retention_analysis.ipynb).
+- Monthly retention cohort analysis at order placement stage
+- Product/market fit assessment from behavioral data
+- Identified 5 key metrics for profit maximization
+- Hypothesis prioritization using ICE framework
+- Defined target, proxy, and guardrail metrics for selected hypothesis
+- Analytical report with conclusions and recommendations
 
 ---
 
-## Стек
+## Key Findings
+
+- **Retention is critically low:** median M1 retention ≈ **0.5%**; ~**97%** of buyers don't return after first purchase, only ~**3%** place a repeat order.
+- **Product/market fit not confirmed:** no stable "plateau" on the retention curve — users don't form a habit of returning.
+- **Marketplace relies on new customer acquisition**, not retention; scaling marketing without improving repeat orders is risky for unit economics.
+- **Funnel bottleneck — second order:** worth investigating payment, delivery, status transparency, and return mechanics.
+- **Top hypothesis (ICE):** new payment method to boost repeat orders — validate via A/B test before full rollout.
+
+Full analysis, charts, and calculations in [`ecommerce_retention_analysis.ipynb`](./ecommerce_retention_analysis.ipynb).
+
+---
+
+## Stack
 
 - **Python 3.10+**
 - **pandas**, **numpy**
-- **matplotlib**, **seaborn** — когортные heatmap, динамика метрик
-- **statsmodels** — z-тест долей между когортами
+- **matplotlib**, **seaborn** — cohort heatmaps, metrics dynamics
+- **statsmodels** — z-test for proportion comparison between cohorts
 
 ---
 
-## Структура репозитория
+## Repository Structure
 
 ```
 .
 ├── README.md
+├── LICENSE
 ├── requirements.txt
 ├── ecommerce_retention_analysis.ipynb
 ├── olist_customers_dataset.csv
@@ -68,47 +67,24 @@
 
 ---
 
-## Как запустить
+## Data
 
-```bash
-git clone git@github.com:margomrkv/ecommerce-retention-analysis.git
-cd ecommerce-retention-analysis
+Three tables from the public **[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)** (Kaggle). Source: Brazilian marketplace [Olist](https://olist.com/), period **2016–2018**.
 
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+| File | Content |
+|------|---------|
+| `olist_customers_dataset.csv` | Customers |
+| `olist_orders_dataset.csv` | Orders (statuses, dates) |
+| `olist_order_items_dataset.csv` | Order items (price, product) |
 
-jupyter lab ecommerce_retention_analysis.ipynb
-```
-
-CSV-файлы должны лежать в той же папке, что и ноутбук.
+Project code is distributed under [MIT License](./LICENSE); data usage governed by [Kaggle dataset terms](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 
 ---
 
-## Данные
-
-Три таблицы из публичного датасета **[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)** (Kaggle). Источник — бразильский маркетплейс [Olist](https://olist.com/), период **2016–2018**.
-
-| Файл | Содержание |
-|------|------------|
-| `olist_customers_dataset.csv` | Пользователи |
-| `olist_orders_dataset.csv` | Заказы (статусы, даты) |
-| `olist_order_items_dataset.csv` | Позиции заказов (цена, товар) |
-
----
-
-## Ограничения
-
-- Retention считается только по заказам со статусом `delivered`.
-- Колонка `freight_value` в работе не использовалась.
-- Осень 2018 года — возможный артефакт выгрузки (резкий спад заказов и рост отмен); требует отдельной проверки.
-
----
-
-## Контакты
+## Contact
 
 GitHub: [@margomrkv](https://github.com/margomrkv)
 
 ---
 
-*Последнее обновление README: 2026-06-03*
+*Last updated: 2026-06-29*

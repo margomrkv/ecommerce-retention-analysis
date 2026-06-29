@@ -1,8 +1,33 @@
+# macOS
 .DS_Store
+
+# IDE
 .idea/
+.vscode/
+
+# Secrets
 .env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
 .venv/
 venv/
-__pycache__/
-*.pyc
+env/
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Logs and caches
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
